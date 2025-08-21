@@ -1,0 +1,24 @@
+package webapp
+
+import (
+	"net/http"
+
+	"github.com/gocraft/web"
+)
+
+func (c *Context) UserMiddleware(w web.ResponseWriter, r *web.Request, next web.NextMiddlewareFunc) {
+	user, _ := FindUserByUsername(r.PathParams["username"])
+	if user == nil {
+		http.NotFound(w, r.Request)
+		return
+	}
+
+	if user.Banned {
+		http.NotFound(w, r.Request)
+		return
+	}
+
+	vu := user.ViewUser(c.ViewUser.Language, false)
+	c.ViewMarketplaceUser = &vu
+	next(w, r)
+}
