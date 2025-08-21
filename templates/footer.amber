@@ -1,0 +1,37 @@
+block footer
+  div.sixteen.wide.column.footer-v2
+    div.ui.grid.stackable.first
+      div.three-and-a-half.wide.column
+        h3 Learn How to Buy
+        ul
+          a[href="/help/04_how_to_buy"]
+            li How to Buy
+      div.three-and-a-half.wide.column
+        h3 Make Money with Us
+        ul
+          a[href="/help/03_how_to_sell"]
+            li How to Sell at Tochka
+          a[href="/referrals"]
+            li Commissions
+      div.three-and-a-half.wide.column
+        h3 Let us Help You
+        ul
+          a[href="/support/new"]
+            li Help & Contact
+          a[href="/help/10_how_to_stay_safe"]
+            li Staying Safe
+      div.three-and-a-half.wide.column
+        h3 Get to Know us
+        ul
+          a[href="/help/05_about_marketplace"]
+            li About Tochka
+          a[href="http://ucoi4tzlito52agmquc6oopn3zpmr6djz5vvfabtgrhyc6hufpzjtnad.onion/Tochka/tochka-free-market"]
+            li Tochka Source Code
+    div.ui.grid.stackable
+      div.thirteen.wide.column.second
+        div.ui.menu.tiny.horizontal.secondary.fluid.two.item
+          a.item[href="http://ucoi4tzlito52agmquc6oopn3zpmr6djz5vvfabtgrhyc6hufpzjtnad.onion/Tochka"]
+            i.ui.github.icon
+            | Source Code
+          span.item
+            i Page rendered in #{PageRenderTime} ms

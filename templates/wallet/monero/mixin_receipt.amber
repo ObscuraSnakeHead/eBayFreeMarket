@@ -1,0 +1,14 @@
+mixin paymentReceipt($a)
+  div.ui.message
+    div.ui.form
+      div.field
+        label Tx Hash
+        span.label.ui.bitcoin.id.tiny #{$a.TxHash}
+      div.ui.section.divider
+      div.field
+        label Fee
+        span #{$a.Fee} 
+      div.ui.section.divider
+      div.field
+        label Tx Key
+        pre.word-break #{$a.TxKey}                          
