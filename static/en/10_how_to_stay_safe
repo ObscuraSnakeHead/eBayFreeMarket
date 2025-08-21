@@ -1,0 +1,33 @@
+**Tochka Marketplace: User Safety and Best Practices**
+
+**1. Maintaining Anonymity**
+
+- **Separate Identities**: Avoid linking clearnet (regular web) sites with your Tor Browser to prevent association of your Tor connection with clearnet accounts.
+- **Tor Browser Security**:
+  - Disable JavaScript.
+  - Keep software up-to-date for optimal security features.
+
+**2. Secure Communication**
+
+- **PGP Encryption**: Encrypt messages sent to vendors for enhanced security. Use PGP!
+
+**3. Vendor Due Diligence**
+
+- **Reputation Check**: Always verify vendors' reviews and ratings to minimize risk.
+- **No Early Finalization**: Never release payment before receiving the product.
+  - If a vendor pressures you to do so, report them to Tochka staff.
+- **Dispute Resolution**:
+  - If your order doesn't arrive within six days, initiate a dispute.
+
+**4. Enhanced Security Measures**
+
+- **Avoid Fake Identities**: Using real names minimizes attention and reduces the likelihood of scrutiny.
+- **Drop Systems & P.O. Boxes**: Use intermediary addresses or P.O. boxes for package reception, employing forged documents if necessary.
+- **Patience**: Anticipate delays due to weather conditions, holidays, and shipping processes.
+- **Message Vendors First**: Attempt communication before leaving negative feedback; politeness can foster resolution.
+
+**5. VPN Usage (Optional but Recommended)**
+
+A Virtual Private Network (VPN) masks your IP address and location while encrypting online activity. Using a VPN alongside Tor enhances overall anonymity, protecting you from potential threats such as identity theft or hacking on public Wi-Fi networks.
+
+Always remember: **Safety first, anonymity second**. Prioritize security measures before making purchases to ensure a safer, more private experience. Familiarize yourself with our Security Tutorials section for additional tips and best practices.

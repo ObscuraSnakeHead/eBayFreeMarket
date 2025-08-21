@@ -1,0 +1,59 @@
+# How to Buy on Darknet Markets
+
+This guide will walk you through the process of purchasing items safely and securely on darknet markets (DNMs), using Tochka as an example.
+
+## **Before You Start**
+
+1. **Understand Risks**: Using DNMs involves inherent risks, such as law enforcement surveillance and potential vendor scams. Always exercise caution and good opsec practices.
+2. **Install a Secure Browser**: Use Tor Browser to access onion sites securely and anonymously. Download it from the official website: <https://www.torproject.org/download/>
+3. **Set Up a Wallet**: Create a wallet for your chosen cryptocurrency (e.g., Bitcoin or Monero) to store funds for purchases.
+4. **Create an Account**: Register on Tochka (or your preferred DNM) using your Tor Browser.
+
+## **Searching and Selecting Products**
+
+1. Navigate to the market's main page by entering its onion URL into the Tor Browser address bar.
+2. Browse categories or use the search function to find products you're interested in.
+3. Visit a vendor's storefront or product listing to learn more about their offerings, pricing, and policies.
+
+## **Placing an Order**
+
+1. Once you've found your desired item, click "Buy" or "Purchase" to add it to your cart.
+2. Review your order details (quantity, price, fees) in your shopping cart.
+3. Choose your preferred payment method:
+   - **Escrow**: Most common; ensures both buyer and seller have protection until the product is delivered.
+   - **Finalize Early (FE)**: Buyers pay upfront, sellers ship immediately. Riskier for buyers but offers faster delivery.
+4. Select your desired package type (e.g., Mail, Digital, etc.) if applicable.
+5. Click "Order Now" or similar button to proceed with the purchase.
+
+## **Making Payment**
+
+1. Follow the instructions provided on the checkout screen:
+   - Generate a new Bitcoin/Moreno wallet address for each order.
+   - Send the exact amount required (including fees) from your wallet to the generated address.
+2. Wait for confirmations on the blockchain before continuing. This usually takes around 30 minutes but can vary.
+
+## **Order Management**
+
+1. Monitor your orders in your account's "Orders" page:
+   - **PENDING**: Waiting for payment confirmation.
+   - **COMPLETED**: Payment confirmed; awaiting vendor shipment.
+   - **SHIPPED**: Vendor claims to have shipped the product.
+   - **RECEIVED**: You've confirmed receipt of the product.
+2. Communicate with vendors through the provided messaging system regarding order status, disputes, or requests.
+
+## **Leaving Feedback and Reviews**
+
+1. Once your order has reached "Received" status, you can leave feedback for the vendor:
+   - Rate their service (e.g., 1-5 stars)
+   - Write a review describing your experience
+2. Other users will see this feedback when browsing that vendor's products.
+
+## **Safety and Opsec Tips**
+
+1. Always use Tor Browser to access DNMs.
+2. Create and use new Bitcoin/Moreno addresses for each purchase.
+3. Enable two-factor authentication (2FA) on your account whenever possible.
+4. Never share personal information with vendors or other users.
+5. Avoid purchasing large quantities of items at once to minimize risk.
+
+By following this guide, you'll be able to safely and securely buy products on darknet markets like Tochka. Always remain cautious and prioritize opsec to protect your identity and funds.
