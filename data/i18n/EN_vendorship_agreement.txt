@@ -1,0 +1,83 @@
+eBay Vendor Agreement [version 2025-08-21]
+
+This Vendor agreement is made and entered into on {date}, by and between:
+
+(1) User @{username}, pgp fingerprint {fingerprint}, hereinafter - the VENDOR
+(2) eBay Marketplace operator, @rename, pgp fingerprint PGPFINGERPRINTHERE, hereinafter - EBAY MARKETPLACE
+
+1. GENERAL RULES
+
+1.1 FORBIDDEN ACTIONS AND ACTIVITIES
+
+All Parties have agreed not to:
+
+1.1.1. Disclosing personal information. No party is entitled to disclose any personal information obtained by participaing in EBAY MARKETPLACE activities.
+1.1.2. Spamming, ddosing, and flooding on the forum and the Marketplace.
+1.1.3. Any attempts to deanonymize users.
+1.1.4. Hidden or open advertisement of another markets and sites.
+1.1.5. Discussing eBay's rules and actions, unless to advise another user to prevent a violation.
+1.1.6. Taking names that look like vendor’s names or that could be considered offensive to other users.
+1.1.7. Using software that could harm eBay Marketplace or its users.
+1.1.8. Any form of user discrimination.
+1.1.9. Using FUD techniques.
+1.1.10. Intentional fraud, dishonest behavior towards other users.
+
+1.2. FORBIDDEN ITEM CATEGORIES
+
+None of these items can be sold on Marketplace
+
+1.2.1. Highly-harmful and life-threatening substances (Nerve Agents, Toxins and Poisons)
+1.2.2. All firearm products excluding handguns and handgun ammo
+1.2.3. Pornography and/or Child Abuse Imagery
+
+2. VENDOR RESPONSIBILITIES
+
+VENDORS have agreed to:
+
+2.1. Provide accurate information of items VENDOR is selling. This information should be up to date and renewed if necessary. [Vendor must provide accurate and non-distorted info.]
+2.2. Provide pictures of actual items VENDOR is selling. These images should contain a piece of paper with inscription of marketplace and vendor username. VENDOR has agreed not to photoshop or fake these images. [Vendor must post only items they can sell and proof authenticiy of items by making actual pictures with them.]
+2.3. Conduct transaction using eBay marketplace's escrow or multisig service and not inquire for offsite deals. [Vendor is forbidden to initiate off-site deals.]
+2.4. A funded transaction automatically enforces a contract via buyer and vendor. Terms of this transaction include EBAY MARKETPLACE Rules and VENDOR Rules if VENDOR has them posted on their profile. VENDOR is entitiled to fullfil their part of contract in order to recieve funds. [vendor agrees not to scam buyers.]
+2.5. Provide items and services on a honest basis, without any intention of disclosing BUYER's personal information to a third party. [VENDOR will not have any malicious intentions, executing deals on basis of good will, won't disclose BUYER's personal information.]
+
+3. BUYER RESPONSIBILITIES
+
+3.1. By purchasing from a VENDOR, the BUYER agrees with VENDOR rules, which are posted on VENDOR’s page.
+3.2. When pre-ordering, buyer must specify place, time, address and quantity for the order.
+3.3. When BUYER chooses to purchase an item via mail shipping, he deals with a VENDOR on his own, specifying address and his personal information. In these kind of deals EBAY MARKETPLACE does not have any responsibility for quality, quantity, or possible fraud/scams. Report fraud/scams to eBay admins immediately and file a dispute if the issue arises.
+
+4. MARKETPLACE RESPONSIBILITIES
+
+4.1. Provide ESCROW SERVICE and help to resolve controversial situations.
+4.2. Maintain order and friendly atmosphere on marketplace.
+
+5. DISPUTE RESOLUTION
+
+5.1. This Agreement and all rights and obligations hereinunder, including matters of construction, validity, performance and dispute resolution, shall be governed by and constued in accordance with International law, without regard to any conflict of laws, rules or principles that may require the application of any other law. [Treat this Agreement as if it was under International Contract Law, except of it is not enforceable by any legal entity. Therefore, a qualified actor will be ruling any contraversial situations that may arise. Refer to following link for basic principles of International Contract Law: https://globallinklaw.com/understanding-international-contract-law-key-principles-and-practices/
+5.2. The Parties to this agreement shall undertake all reasonable measures for peaceful settlement of any DISPUTEs or disagreements which may arise in connection with this Agreement be negotiation.
+
+6. TERMS AND TERMINATIONS
+
+6.1. This agreement comes into full force the date of its release and shall remain in force until agreement text has changed. If agreement text is changed, VENDORS and BUYERS will informed and asked to comply with the latest version of this Agreement.
+6.2. In case of termination of the Agreement the Parties shall not be exempt from conducting contracts arisen during period of its validity.
+
+7. LANGUAGE
+
+7.1. eBay Vendorship Agreement will be in English language or, if in another language, shall be accompanied by a translation into English which translation shall be the governing version for the Parties. For avoidance of doubt, the original English version of this Agreement may have been translated into other languages. The translated version of English Agreement is a courtesy and office translation only.
+
+8. ASSIGNMENTS
+
+8.1. Neither Party may assign its rights or obligations under this Agreement to a third party in whole or in part without previous written permission presented to the other Party.
+
+9. DEFINITIONS
+
+In this agreement all capitalized terms and expressions shall bear the meaning attached to them, unless expressly defined herein below
+
+"ESCROW SERVICE" - MARKETPLACE holds funds for a transaction until all terms on which transaction has been initiated are executed or other condition under which transaction is considered finalized met. [If vendor asks for FE, and buyer accepts it, then it means that contract is considered finalized and MARKETPLACE won't be able to resolve any conflicts if any arise.]
+"DISPUTE" - A contraversial situation during which ESCROW funds are frozen and MARKETPLACE staff is entitled to investigate into the case.
+"ITEM" - Physical Item, Service, Digital Item that VENDOR is selling.
+"MULTISIG" - Multi-signature address is different kind of ESCROW transaction. Multisig address require multiple keys to move funds from it.
+"FRAUD" - Wrongful deception intended to result in financial or personal gain.
+"FUD" - is an acronym for fear, uncertainty and doubt. It is a term that describes number of methods that are intended to evoke confusion.
+
+By signing with my PGP key, I certify that I have read the above information and agree to follow rules applicable to my account type. My signature certifies my understanding of and agreement with the above terms.
