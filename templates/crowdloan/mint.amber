@@ -1,0 +1,40 @@
+extends ./../layout
+
+block left_menu
+  +leftMenu("crowdloans")
+
+block content
+  form.ui.segment.form
+    [method="POST"]
+    [enctype="multipart/form-data"]
+    [class="error"] ? Error
+    h3.ui.dividing.header Mint Crowdloan
+    div.ui.error.message
+      div.header #{Localization.Items.Error}
+      p #{Error}
+    div.field.required
+      label Amount
+      div.ui.input
+        input[name="amount"][type="number"][placeholder="Amount"][required]
+    div.field.required
+      label Crowdloan Campaign Duration
+      div.ui.input
+        select[id="duration"][name="duration"]
+          option[value="1"] 1 week
+          option[value="2"] 2 weeks
+          option[value="3"] 3 weeks
+          option[value="4"] 4 weeks
+          option[value="5"] 5 weeks
+          option[value="6"] 6 weeks
+          option[value="7"] 7 week
+          option[value="8"] 8 weeks
+          option[value="9"] 9 weeks
+          option[value="10"] 10 weeks
+          option[value="11"] 11 weeks
+          option[value="12"] 12 weeks
+    div.field.required
+      label Weekly Interest
+      div.ui.input
+        input[name="weekly_interest"][type="number"][placeholder="Weekly Interest Rate"][required]
+    div.ui.section.divider
+    button.ui.teal.submit.button[type="submit"] #{Localization.Items.Save}

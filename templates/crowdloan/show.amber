@@ -1,0 +1,73 @@
+extends ./../layout
+
+block left_menu
+  +leftMenu("crowdloans")
+
+block content
+  div.ui.segment.form
+    h3.ui.dividing.header Crowdloan #{ViewCrowdloan.Uuid}
+    div.field
+      label Goal Amount
+      div.ui.input
+        span #{ViewCrowdloan.GoalValue}
+    div.field
+      label Goal Date
+      div.ui.input
+        span #{ViewCrowdloan.GoalDate}
+    div.field
+      label Current Status
+      div.ui.input
+        span #{ViewCrowdloan.CurrentStatus} / #{ViewCrowdloan.CurrentStatusTime}
+    div.field
+      label Current Value
+      div.ui.input
+        span #{ViewCrowdloan.Value}
+    div.field
+      label Weekly Interest Rate, %
+      div.ui.input
+        span #{ViewCrowdloan.WeeklyInterestRate}
+    div.field
+      label User
+      div.ui.input
+        a[href="/user/" + ViewCrowdloan.User.Username] @#{ViewCrowdloan.User.Username}
+
+  if ViewCrowdloan.IsFunding && ViewCrowdloan.User.Uuid != ViewUser.Uuid && !ViewCrowdloanLend
+    form.ui.segment.form
+      [method="POST"]
+      [action="/crowdloans/" + ViewCrowdloan.Uuid + "/fund"] 
+      [enctype="multipart/form-data"]
+      [class="error"] ? Error
+      div.ui.error.message
+        div.header #{Localization.Items.Error}
+        p #{Error}
+      div.field.required
+        label Amount
+        div.ui.input
+          input[name="amount"][type="number"][placeholder="Amount"][required]
+      div.ui.section.divider
+      button.ui.teal.submit.button[type="submit"] Fund Crowdloan
+
+  if ViewCrowdloan.IsFunded && ViewCrowdloan.User.Uuid == ViewUser.Uuid
+    form.ui.segment.form
+      [method="POST"]
+      [action="/crowdloans/" + ViewCrowdloan.Uuid + "/withdraw"] 
+      [enctype="multipart/form-data"]
+      [class="error"] ? Error
+      div.ui.error.message
+        div.header #{Localization.Items.Error}
+        p #{Error}
+      button.ui.teal.submit.button[type="submit"] Withdraw Funds to Wallet
+
+  if ViewCrowdloan.IsInterestYield && ViewCrowdloan.User.Uuid == ViewUser.Uuid
+    form.ui.segment.form
+      [method="POST"]
+      [action="/crowdloans/" + ViewCrowdloan.Uuid + "/payback"] 
+      [enctype="multipart/form-data"]
+      [class="error"] ? Error
+      div.ui.error.message
+        div.header #{Localization.Items.Error}
+        p #{Error}
+      div.field
+        label Closing Amount: #{ViewCrowdloan.ClosingAmount}
+        p To close this loan you need to have closing amount on your wallet balance.
+      button.ui.teal.submit.button[type="submit"] Close Crowdloan

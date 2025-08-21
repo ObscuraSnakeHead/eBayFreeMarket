@@ -1,0 +1,32 @@
+$localization = Localization
+table.ui.table.striped
+  thead
+    tr
+      td Crowdloan Type
+      td Goal Amount
+      td Goal Date
+      td Weekly Interest Rate (%)
+      td Lend Value
+      td Created at
+      td Current Status      
+  tbody
+    each $crowdloanLend in ViewCrowdloanLends
+      tr
+        td
+          span.ui.label.tiny.dark-green #{$crowdloanLend.Type}
+          a.ui.tiny.label.bitcoin.id[href="/crowdloans/"+$crowdloanLend.Uuid]
+            i.icon.info
+            | #{$crowdloanLend.Uuid}
+        td 
+          span.ui.label.tiny Goal Value: #{$crowdloanLend.GoalValue}
+        td
+          span.ui.label.tiny #{$crowdloanLend.GoalDate}
+        td
+          span.ui.label.tiny #{$crowdloanLend.WeeklyInterestRate} %
+        td
+          span.ui.label.tiny #{$crowdloanLend.LendValue}
+        td
+          span.ui.label.tiny #{$crowdloanLend.CreatedAt} 
+        td
+          span.ui.label.tiny.green #{$crowdloanLend.CurrentStatus}
+          span.ui.label.tiny #{$crowdloanLend.CurrentStatusTime} 

@@ -1,0 +1,42 @@
+extends ./../layout
+
+block left_menu
+  +leftMenu("crowdloans")
+
+block content
+  div.ui.horizontal.menu.tiny.secondary
+    a.ui.item ALL
+      [href="/crowdloans?status="] 
+      [class="active"] ? SelectedStatus == ""
+    a.ui.item FUNDING
+      [href="/crowdloans?status=FUNDING"]     
+      [class="active"] ? SelectedStatus == "FUNDING"
+    a.ui.item FUNDED
+      [href="/crowdloans?status=FUNDED"]   
+      [class="active"] ? SelectedStatus == "FUNDED"    
+    a.ui.item REFUNDED
+      [href="/crowdloans?status=REFUNDED"] 
+      [class="active"] ? SelectedStatus == "REFUNDED"
+    a.ui.item INTEREST_YIELD
+      [href="/crowdloans?status=INTEREST_YIELD"]   
+      [class="active"] ? SelectedStatus == "INTEREST_YIELD"
+    div.right.menu
+      a.ui.button[href="/crowdloans/loans"] My Loans
+      a.ui.button.dark-green[href="/crowdloans/lends"] My Lends
+      a.ui.button[href="/crowdloans/mint"] Mint New Crowdloan
+  if len(ViewCrowdloanLends) > 0
+    import ./partial_list_lends.amber
+    $selectedPage = Page
+    if len(Pages) > 1
+      div.ui.section.divider
+      div.ui.pagination.menu.mini
+        each $page in Pages
+          div.item 
+            .active ? $page == $selectedPage
+            a[href="?page="+$page] #{$page}
+  else
+    div.ui.icon.message
+      i.icon.payment
+      div.content
+        div.header No Lends
+        p You investments will appear here
