@@ -28,11 +28,6 @@ func buildIndexMapping() *mapping.IndexMappingImpl {
 	parentcategoryenTextFieldMapping := bleve.NewTextFieldMapping()
 	parentcategoryenTextFieldMapping.Analyzer = textFieldAnalyzer
 
-	storeFieldOnlyMapping := bleve.NewTextFieldMapping()
-	storeFieldOnlyMapping.Index = false
-	storeFieldOnlyMapping.IncludeTermVectors = false
-	storeFieldOnlyMapping.IncludeInAll = false
-
 	itemMapping := bleve.NewDocumentMapping()
 	itemMapping.AddFieldMappingsAt("Name", nameTextFieldMapping)
 	itemMapping.AddFieldMappingsAt("Description", descriptionTextFieldMapping)
@@ -48,9 +43,11 @@ func buildIndexMapping() *mapping.IndexMappingImpl {
 
 func init() {
 	var err error
-	BleveIndex, err = bleve.New("./data/index.bleve", buildIndexMapping())
+	// First, try to open the index.
+	BleveIndex, err = bleve.Open("./data/index.bleve")
 	if err != nil {
-		BleveIndex, err = bleve.Open("./data/index.bleve")
+		// If it doesn't exist, create it.
+		BleveIndex, err = bleve.New("./data/index.bleve", buildIndexMapping())
 		if err != nil {
 			panic(err)
 		}
@@ -58,10 +55,13 @@ func init() {
 }
 
 func printDocsFromSearchResults(searchResults *bleve.SearchResult) {
-	// collect the original documents
 	for _, val := range searchResults.Hits {
 		id := val.ID
-		doc, _ := BleveIndex.Document(id)
+		doc, err := BleveIndex.Document(id)
+		if err != nil {
+			fmt.Printf("Error retrieving document %s: %v\n", id, err)
+			continue
+		}
 
 		rv := struct {
 			ID     string                 `json:"id"`
@@ -86,7 +86,16 @@ func printDocsFromSearchResults(searchResults *bleve.SearchResult) {
 				if err == nil {
 					newval = d.Format(time.RFC3339Nano)
 				}
+			case *document.StringField:
+				newval = string(field.Value())
+			default:
+				newval = nil
 			}
+
+			if newval == nil {
+				continue
+			}
+
 			existing, existed := rv.Fields[field.Name()]
 			if existed {
 				switch existing := existing.(type) {
@@ -103,7 +112,11 @@ func printDocsFromSearchResults(searchResults *bleve.SearchResult) {
 			}
 		}
 
-		js, _ := json.MarshalIndent(rv, "", "    ")
+		js, err := json.MarshalIndent(rv, "", "    ")
+		if err != nil {
+			fmt.Printf("Error marshalling JSON for doc %s: %v\n", id, err)
+			continue
+		}
 		fmt.Printf("%s\n", js)
 	}
 }
