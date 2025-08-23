@@ -1,4 +1,4 @@
-package webapp
+package main
 
 import (
 	"encoding/json"
@@ -55,66 +55,18 @@ func init() {
 }
 
 func printDocsFromSearchResults(searchResults *bleve.SearchResult) {
-	for _, val := range searchResults.Hits {
-		id := val.ID
-		doc, err := BleveIndex.Document(id)
-		if err != nil {
-			fmt.Printf("Error retrieving document %s: %v\n", id, err)
-			continue
-		}
-
+	for _, hit := range searchResults.Hits {
 		rv := struct {
 			ID     string                 `json:"id"`
 			Fields map[string]interface{} `json:"fields"`
 		}{
-			ID:     id,
-			Fields: map[string]interface{}{},
-		}
-
-		for _, field := range doc.Fields {
-			var newval interface{}
-			switch field := field.(type) {
-			case *document.TextField:
-				newval = string(field.Value())
-			case *document.NumericField:
-				n, err := field.Number()
-				if err == nil {
-					newval = n
-				}
-			case *document.DateTimeField:
-				d, err := field.DateTime()
-				if err == nil {
-					newval = d.Format(time.RFC3339Nano)
-				}
-			case *document.StringField:
-				newval = string(field.Value())
-			default:
-				newval = nil
-			}
-
-			if newval == nil {
-				continue
-			}
-
-			existing, existed := rv.Fields[field.Name()]
-			if existed {
-				switch existing := existing.(type) {
-				case []interface{}:
-					rv.Fields[field.Name()] = append(existing, newval)
-				case interface{}:
-					arr := make([]interface{}, 2)
-					arr[0] = existing
-					arr[1] = newval
-					rv.Fields[field.Name()] = arr
-				}
-			} else {
-				rv.Fields[field.Name()] = newval
-			}
+			ID:     hit.ID,
+			Fields: hit.Fields, // Corrected: Use fields from the search result hit directly.
 		}
 
 		js, err := json.MarshalIndent(rv, "", "    ")
 		if err != nil {
-			fmt.Printf("Error marshalling JSON for doc %s: %v\n", id, err)
+			fmt.Printf("Error marshalling JSON for doc %s: %v\n", hit.ID, err)
 			continue
 		}
 		fmt.Printf("%s\n", js)
@@ -124,6 +76,8 @@ func printDocsFromSearchResults(searchResults *bleve.SearchResult) {
 func searchWithQuery(query query.Query) *bleve.SearchResult {
 	search := bleve.NewSearchRequest(query)
 	search.Size = 2000
+	// Corrected: Request fields to be included in the search results
+	search.Fields = []string{"*"} 
 
 	searchResults, err := BleveIndex.Search(search)
 	if err != nil {
@@ -134,17 +88,59 @@ func searchWithQuery(query query.Query) *bleve.SearchResult {
 
 func SearchItems(text string) []string {
 	query := bleve.NewMatchQuery(text)
-	var searchResults *bleve.SearchResult
-	searchResults = searchWithQuery(query)
+	searchResults := searchWithQuery(query)
 
+	// Corrected: Only perform the fuzzy search if the first one yields no results.
 	if len(searchResults.Hits) < 1 {
-		query := bleve.NewQueryStringQuery(text + "~2")
+		query = bleve.NewQueryStringQuery(text + "~2")
 		searchResults = searchWithQuery(query)
 	}
 
-	ids := []string{}
-	for _, hit := range searchResults.Hits {
-		ids = append(ids, hit.ID)
+	ids := make([]string, len(searchResults.Hits))
+	for i, hit := range searchResults.Hits {
+		ids[i] = hit.ID
 	}
 	return ids
+}
+
+// Additional helper functions for a complete example.
+// These are not part of the original code, but are useful for demonstrating the corrected functions.
+type Item struct {
+	Name             string `json:"Name"`
+	Description      string `json:"Description"`
+	CategoryEn       string `json:"CategoryEn"`
+	ParentCategoryEn string `json:"ParentCategoryEn"`
+}
+
+func main() {
+	// A basic example of how the corrected functions would be used.
+	// Indexing some dummy data.
+	items := []Item{
+		{"Go Language", "A statically typed, compiled programming language designed at Google.", "Programming Languages", "Computer Science"},
+		{"Python Programming", "An interpreted, high-level, general-purpose programming language.", "Programming Languages", "Computer Science"},
+		{"Java Language", "A high-level, class-based, object-oriented programming language.", "Programming Languages", "Computer Science"},
+	}
+
+	for i, item := range items {
+		_ = BleveIndex.Index(fmt.Sprintf("item-%d", i), item)
+	}
+
+	// Wait for the index to be ready for searching.
+	time.Sleep(1 * time.Second)
+
+	// Demonstrating the SearchItems function.
+	fmt.Println("Searching for 'Go Language'")
+	ids := SearchItems("Go Language")
+	fmt.Printf("Found IDs: %v\n", ids)
+
+	// Demonstrating the fuzzy search.
+	fmt.Println("\nSearching for 'Pyton Prograaming' (with typos)")
+	ids = SearchItems("Pyton Prograaming")
+	fmt.Printf("Found IDs: %v\n", ids)
+
+	// Retrieve and print documents from search results
+	fmt.Println("\nPrinting documents for 'Go'")
+	query := bleve.NewMatchQuery("Go")
+	searchResults := searchWithQuery(query)
+	printDocsFromSearchResults(searchResults)
 }
